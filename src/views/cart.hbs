@@ -1,0 +1,18 @@
+<div>
+  <h1>Detalles del Carrito:</h1>
+  <br>
+  <h2>Carrito {{cartToRender._id}}</h2>
+
+  <ul>
+    {{#each cartToRender.products as |cartProduct|}}
+      <li>
+        <h3>Producto: {{cartProduct.product.title}}</h3>
+        <p>Cantidad: {{cartProduct.quantity}}</p>
+        <!-- Add other product details as needed -->
+      </li>
+    {{/each}}
+  </ul>
+  <button id="finishPurchaseButton">Finish Purchase</button>
+</div>
+
+<script src="/js/finish.purchase.js"></script>
