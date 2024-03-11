@@ -3,14 +3,15 @@ import { fileURLToPath } from "url";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import passport from "passport";
-import config from "./config/config.js";
+import config from "./config/db/env.config.js";
 import { faker } from "@faker-js/faker";
+import { SALT_NUMBER } from "./config/db/constants/salt.constant.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export const createHash = (password) =>
-  bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+  bcrypt.hashSync(password, bcrypt.genSaltSync(SALT_NUMBER));
 export const isValidPassword = (user, password) =>
   bcrypt.compareSync(password, user.password);
 

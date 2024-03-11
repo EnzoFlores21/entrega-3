@@ -4,11 +4,11 @@ import ProductsServiceDao from "./dao/mongoDb/products.dao.js";
 import ChatServiceDao from "./dao/mongoDb/chat.dao.js";
 import UsersServiceDao from "./dao/mongoDb/users.dao.js";
 
-import CartRepository from "../repositories/cart.repository.js";
-import TicketRepository from "../repositories/ticket.repository.js";
-import ProductsRepository from "../repositories/products.repository.js";
-import ChatRepository from "../repositories/chat.repository.js";
-import UsersRepository from "../repositories/users.repository.js";
+import CartRepository from "./repositories/chat.repository.js";
+import TicketRepository from "./repositories/ticket.repository.js";
+import ProductsRepository from "./repositories/products.repository.js";
+import ChatRepository from "./repositories/chat.repository.js";
+import UsersRepository from "./repositories/users.repository.js";
 
 const cartDao = new CartsServiceDao();
 const ticketDao = new TicketServiceDao();

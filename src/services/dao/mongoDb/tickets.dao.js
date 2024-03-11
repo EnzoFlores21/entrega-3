@@ -1,5 +1,5 @@
-import ticketModel from "../../models/ticket.model.js";
-import TicketDTO from "../DTOs/ticket.dto.js";
+import ticketModel from "../../../models/ticket.model.js";
+import TicketDTO from "../../DTOs/ticket.dto.js";
 
 export default class TicketServiceDao {
     constructor() {

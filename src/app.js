@@ -18,10 +18,11 @@ import Handlebars from "handlebars";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 import passport from "passport";
-import initializePassport from "./config/passport.config.js";
+import initializePassport from "./config/auth/passport.config.js";
 import githubLoginViewRouter from "./routes/githubLogin.router.js";
 import cookieParser from "cookie-parser";
-import config from "./config/config.js";
+import config from "./config/db/env.config.js";
+import { addLogger } from './config/logger.js';
 
 const app = express();
 
@@ -45,6 +46,8 @@ mongoose
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(addLogger)
 
 app.get("/", (request, response) => {
   response.send("<h1> Bienvenidos al servidor.</h1>");
@@ -75,7 +78,7 @@ app.engine(
 app.set("views", `${__dirname}/views`);
 app.set("view engine", "hbs");
 
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "./public"));
 
 const httpServer = app.listen(config.port, () =>
   console.log("Servidor en el puerto 8080 esta activo.")

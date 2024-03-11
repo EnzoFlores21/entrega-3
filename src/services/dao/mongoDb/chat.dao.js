@@ -1,4 +1,4 @@
-import { chatModel } from "../../models/message.model.js";
+import { chatModel } from "../../../models/message.model.js";
 
 export default class ChatServiceDao {
   async createMessage(mesg) {

@@ -1,10 +1,10 @@
 import passport from "passport";
 import passportLocal from "passport-local";
-import { userModel } from "../services/models/user.model.js";
-import { createHash, isValidPassword } from "../utils.js";
+import { userModel } from "../../models/user.model.js";
+import { createHash, isValidPassword } from "../../utils.js";
 import GitHubStrategy from "passport-github2";
 import jwtStrategy from "passport-jwt";
-import config from "./config.js";
+import config from "../db/env.config.js";
 
 const localStrategy = passportLocal.Strategy;
 

@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { productModel } from "../../models/products.model.js";
+import { productModel } from "../../../models/products.model.js";
 
 export default class ProductsServiceDao {
   async getAllProducts(limit = 10, page = 1, query, sort) {
