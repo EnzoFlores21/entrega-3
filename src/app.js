@@ -67,6 +67,9 @@ app.use("/github", githubLoginViewRouter);
 app.use("/api/profile", profileRouter);
 app.use("/api/mockingproducts", mockingProductsRouter)
 
+
+
+
 app.engine(
   "hbs",
   handlebars.engine({
