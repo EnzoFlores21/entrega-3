@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+const UserEnum = ["Classic", "Premium", "Admin"]
+
 const collection = "users";
 
 const schema = new mongoose.Schema({
@@ -12,7 +14,9 @@ const schema = new mongoose.Schema({
   password: String,
   role: {
     type: String,
+    required: true,
     default: "user",
+    enum: UserEnum
   },
   loggedBy: String
 });
