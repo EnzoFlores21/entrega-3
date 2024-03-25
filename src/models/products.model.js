@@ -15,11 +15,7 @@ try {
     stock: { type: Number, required: true },
     status: { type: Boolean, default: true },
     category: { type: String, required: true, index: true },
-    seller: {
-      type: Schema.Types.ObjectId,
-      ref: "accounts",
-      default: "Admin",
-    },
+    name: { type: String, required: true, default: "admin"}
   });
 
   productSchema.plugin(mongoosePaginate);

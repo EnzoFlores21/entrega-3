@@ -258,3 +258,40 @@ export const finishPurchase = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error." });
   }
 };
+
+const sendTicketByEmail = async (req, res, newTicket) => {
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    port: 587,
+    auth: {
+      user: config.gmailAccount,
+      pass: config.gmailAppPassword,
+    },
+    tls: {
+      rejectUnauthorized: false,
+    },
+  });
+  
+  transporter.verify(function (error, success) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Server is ready to send ticket by email.");
+    }
+  });
+
+  const mailOptions = {
+    from: "Coder ecommerce - " + config.gmailAccount,
+    to: `${req.user.email}`,
+    subject: "Ticket de compra",
+    html: `<div><h1> Ticket de compra: </h1><p>${JSON.stringify(newTicket)}</p></div>`,
+    attachments: [],
+  };
+
+  try {
+    const info = await transporter.sendMail(mailOptions);
+    console.log("Message sent: %s", info.messageId);
+  } catch (error) {
+    console.error(error);
+  }
+};
