@@ -67,6 +67,10 @@ app.use("/github", githubLoginViewRouter);
 app.use("/api/profile", profileRouter);
 app.use("/api/mockingproducts", mockingProductsRouter)
 
+app.get("/api/logger", (req, res) => {
+  req.logger.warning("Prueba de log level warning --> en Endpoint");
+  res.send("prueba de logger");
+});
 
 
 
