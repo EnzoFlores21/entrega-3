@@ -23,6 +23,8 @@ import githubLoginViewRouter from "./routes/githubLogin.router.js";
 import cookieParser from "cookie-parser";
 import config from "./config/db/env.config.js";
 import { addLogger } from './config/logger.js';
+import swaggerJSDoc from "swagger-jsdoc";
+import swaggerUiExpress from "swagger-ui-express";
 
 const app = express();
 
@@ -97,3 +99,17 @@ chatSocket(io)
 app.use("/api/realtimeproducts", realTimeProductsRouter);
 app.use("/api/chat", chatRouter);
 
+const swaggerOptions = {
+  definition: {
+    openapi: "3.0.1",
+    info: {
+      title: "Documentacion del ecommerce.",
+      description: "Documentacion creada con swagger.",
+    },
+  },
+  apis: [`${__dirname}/docs/**/*.yaml`],
+};
+
+const specs = swaggerJSDoc(swaggerOptions);
+
+app.use("/apidocs", swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
